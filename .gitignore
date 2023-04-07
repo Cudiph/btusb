@@ -1,0 +1,7 @@
+*.cmd
+*.ko
+*.order
+*.mod*
+*.o
+*.symvers
+btusb.update.c
