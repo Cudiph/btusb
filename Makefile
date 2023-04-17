@@ -3,7 +3,7 @@ KDIR = /lib/modules/$(CURRENT)/build
 PWD = $(shell pwd)
 MODDIR = /lib/modules/$(CURRENT)/kernel/drivers/bluetooth
 MODNAME = btusb
-MODVER = 0.8
+MODVER = 1.0
 MODNAMELONG = $(MODNAME)/$(MODVER)
 
 obj-m = btusb.o
@@ -23,7 +23,7 @@ install: default
 dkms-install: uninstall
 	modprobe -r btusb
 	cp -r . /usr/src/$(MODNAME)-$(MODVER)
-	dkms install $(MODNAMELONG) --force
+	dkms install $(MODNAMELONG)
 	modprobe btusb
 
 uninstall:
