@@ -1,19 +1,18 @@
 CURRENT = $(shell uname -r)
 KDIR = /lib/modules/$(CURRENT)/build
-PWD = $(shell pwd)
+PWD = $(shell pwd)/drivers/bluetooth
 MODDIR = /lib/modules/$(CURRENT)/kernel/drivers/bluetooth
 MODNAME = btusb
-MODVER = 1.0
+MODVER = 0.8-custom
 MODNAMELONG = $(MODNAME)/$(MODVER)
-
-obj-m = btusb.o
 
 default:
 	make -C $(KDIR) M=$(PWD) modules
+	mv $(PWD)/btusb.ko .
 
 clean:
 	make -C $(KDIR) M=$(PWD) clean
-	@rm -f btusb.update.c 
+	rm btusb.ko
 
 install: default
 	make -C $(KDIR) M=$(PWD) INSTALL_MOD_DIR=updates modules_install
@@ -34,3 +33,5 @@ uninstall:
 	depmod
 	modprobe btusb
 
+update:
+	cd $(PWD) && ./update.sh

@@ -1,0 +1,21 @@
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 82597ab..677d15b 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -27,7 +27,7 @@
+ #include "btrtl.h"
+ #include "btmtk.h"
+ 
+-#define VERSION "0.8"
++#define VERSION "0.8-custom"
+ 
+ static bool disable_scofix;
+ static bool force_scofix;
+@@ -690,6 +690,7 @@ static const struct usb_device_id quirks_table[] = {
+ 
+ 	/* Additional Realtek 8822BE Bluetooth devices */
+ 	{ USB_DEVICE(0x13d3, 0x3526), .driver_info = BTUSB_REALTEK },
++	{ USB_DEVICE(0x13d3, 0x3537), .driver_info = BTUSB_REALTEK },
+ 	{ USB_DEVICE(0x0b05, 0x185c), .driver_info = BTUSB_REALTEK },
+ 
+ 	/* Additional Realtek 8822CE Bluetooth devices */
